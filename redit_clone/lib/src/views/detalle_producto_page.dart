@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';           
 
 class DetalleProductoPage extends StatefulWidget {
   const DetalleProductoPage({super.key, required this.id, this.extras});
@@ -11,12 +11,12 @@ class DetalleProductoPage extends StatefulWidget {
 }
 
 class _DetalleProductoPageState extends State<DetalleProductoPage> {
-  late String selectedImage;
+  late String ChangeImage;
 // Inicializar la variable antes que cargue la pantalla
   @override
   void initState() {
     super.initState();
-    selectedImage = widget.extras?['image'] ??
+    ChangeImage = widget.extras?['image'] ??
         'https://img.freepik.com/free-vector/glitch-error-404-page-background_23-2148083447.jpg?t=st=1741201077~exp=1741204677~hmac=7f4799125ec835eedf2222dc7a34eb8ac8a01acc5bedb2ac25473fb55d91b096&w=740';
   }
 
@@ -28,6 +28,7 @@ class _DetalleProductoPageState extends State<DetalleProductoPage> {
           IconButton(
             icon: Icon(Icons.favorite_border),
             onPressed: () {},
+            
           ),
         ],
       ),
@@ -41,7 +42,7 @@ class _DetalleProductoPageState extends State<DetalleProductoPage> {
                 children: [
                   Center(
                     child: Image.network(
-                      selectedImage,
+                      ChangeImage,
                       height: 280,
                       fit: BoxFit.cover,
                     ),
@@ -54,9 +55,7 @@ class _DetalleProductoPageState extends State<DetalleProductoPage> {
                     children: [
                       _MiniImage(widget.extras?['image']),
                       SizedBox(width: 8),
-                      _MiniImage(
-                        'https://demofree.sirv.com/nope-not-here.jpg',
-                      ),
+                      _MiniImage(widget.extras?['image2']),
                     ],
                   ),
                   SizedBox(height: 16),
@@ -145,7 +144,7 @@ class _DetalleProductoPageState extends State<DetalleProductoPage> {
     return InkWell(
       onTap: () {
         setState(() {
-          selectedImage = imageUrl ?? NullImage;
+          ChangeImage = imageUrl ?? NullImage;
         });
       },
       child: Container(
